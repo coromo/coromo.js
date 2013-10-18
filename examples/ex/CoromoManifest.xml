@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<theme wallpaper_path="/images/background.png">
+    <page type="html"
+          html_path="01.html"
+            />
+    <page type="icon"
+            />
+</theme>

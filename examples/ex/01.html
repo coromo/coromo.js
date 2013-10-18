@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="css/reset.css" />
+        <script type="text/javascript" src="lib/jquery-1.10.0.min.js"></script>
+        <script type="text/javascript" src="../../coromo.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                //レスポンシブ対応
+                $('#container').css({
+                    transform : "scale(" + window.innerWidth / 1080 + ")",
+                });
+                //時計部分
+                updateClock();
+                setInterval("updateClock()", 500);
+                //バッテリーウォッチ
+                coromo.watchBatteryStatus(function(result) {
+                    $('#battery').text(result.level + '％ ' + result.status)
+                });
+                //アイコン部分
+                var touchedImageId;
+                var isTapped;
+                $('img').bind('touchstart', function() {
+                    if ($(this).parent().attr('id').indexOf('tile'))
+                        return;
+                    $(this).css("opacity", "0.6");
+                    touchedImageId = ($(this).parent().attr('id'));
+                    isTapped = true;
+                });
+                $('img').bind('touchmove', function() {
+                    isTapped = false;
+                });
+                $('img').bind('touchend', function() {
+                    $(this).css("opacity", "1.0");
+                });
+                //アプリ起動の実装
+                $('#tile_1 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.execAction("browser");
+                    }
+                });
+                $('#tile_2 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.execAction("camera");
+                    }
+                });
+                $('#tile_3 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.execAction("browser");
+                    }
+                });
+                $('#tile_4 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.execAction("mailer");
+                    }
+                });
+                $('#tile_5 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.execAction("dial");
+                    }
+                });
+                $('#tile_6 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.openApp("com.google.android.calendar", "com.android.calendar.AllInOneActivity");
+                    }
+                });
+                $('#tile_7 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.openApp("com.facebook.katana", "com.facebook.katana.LoginActivity");
+                    }
+                });
+                $('#tile_8 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.openApp("com.twitter.android", "com.twitter.android.StartActivity");
+                    }
+                });
+                $('#tile_9 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.openApp("jp.naver.line.android", "jp.naver.line.android.activity.SplashActivity");
+                    }
+                });
+                $('#allApps').bind('touchend', function() {
+                    coromo.openAllApps();
+                });
+                $('#uri').bind('touchend', function() {
+                    coromo.openUri('http://coromo.co/');
+                });
+                $('#rhs').bind('touchend', function() {
+                    coromo.revertHomeScreen();
+                });
+                coromo.onResume = function() {
+                    $('#' + touchedImageId).children("img").css("opacity", "1.0");
+                }
+            });
+            function updateClock() {
+                myDate = new Date();
+                myYear = myDate.getFullYear();
+                myWeek = myDate.getDay();
+                Month = myDate.getMonth() + 1;
+                Today = myDate.getDate();
+                tsuki = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+                youbi = new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
+                var hour = myDate.getHours();
+                var minute = myDate.getMinutes();
+                var second = myDate.getSeconds();
+                var dayTail = "";
+                if (minute < 10) {
+                    minute = "0" + minute;
+                }
+                if (hour < 10) {
+                    hour = "0" + hour;
+                }
+                $("#time").text(hour + ":" + minute);
+                $("#date").text(Month + "/" + Today + "/" + myYear + " " + youbi[myWeek]);
+            }
+        </script>
+        <style>
+            @font-face {
+                font-family: 'bank';
+                src: url(fonts/TT0590M_.TTF)
+            }
+            html, body {
+                height: 100%
+            }
+            #container {
+                overflow: hidden;
+                background: url(images/background.png);
+                background-size: 1080px;
+                width: 1080px;
+                height: 1920px;
+                -webkit-transform-origin: 0 0%;
+            }
+            #container .clock {
+                font-size: 100px;
+                color: white;
+                font-family: "bank"
+            }
+            #container #tests {
+                font-size: 100px;
+                color: white;
+                font-family: "bank"
+            }
+            #container li {
+                float: left;
+                /*overflow: hidden*/
+            }
+            #container .lbox {
+                overflow: hidden
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="clock">
+                <span class="clock" id="time">01:54</span>
+                <br />
+                <span class="clock" id="date">08/02/2013 Fri.</span>
+            </div>
+            <div class="lbox">
+                <ul>
+                    <li id="tile_1" class="icon"><img src="images/rss.png" />
+                    </li>
+                    <li id="tile_2"><img src="images/camera.png" />
+                    </li>
+                    <li id="tile_3"><img src="images/internet.png" />
+                    </li>
+                </ul>
+            </div>
+            <div class="lbox">
+                <ul>
+                    <li id="tile_4"><img src="images/mail.png" />
+                    </li>
+                    <li id="tile_5"><img src="images/phone.png" />
+                    </li>
+                    <li id="tile_6"><img src="images/calenda.png" />
+                    </li>
+                </ul>
+            </div>
+            <div class="lbox">
+                <ul>
+                    <li id="tile_7"><img src="images/fb.png" />
+                    </li>
+                    <li id="tile_8"><img src="images/tw.png" />
+                    </li>
+                    <li id="tile_9"><img src="images/line.png" />
+                    </li>
+                </ul>
+            </div>
+            <div id="tests">
+                <span id="allApps">openAllApps</span>
+                <span id="uri">openUri("coromo.co")</span>
+                <span id="rhs">revertHomeScreen</span>
+                <span id="battery">100% charging</span>
+            </div>
+        </div>
+    </body>
+</html>
+

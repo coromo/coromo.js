@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="css/reset.css" />
         <script type="text/javascript" src="lib/jquery-1.10.0.min.js"></script>
         <script type="text/javascript" src="../../coromo.js"></script>
+        <script type="text/javascript" src="../../plugins/owm.coromo.js"></script>
         <script type="text/javascript">
             $(function() {
                 //レスポンシブ対応
@@ -15,6 +16,9 @@
                 //時計部分
                 updateClock();
                 setInterval("updateClock()", 500);
+                //天気取得
+                updateWeather();
+                setInterval('updateWeather()', 3600000);
                 //バッテリーウォッチ
                 coromo.watchBatteryStatus(function(result) {
                     $('#battery').text(result.level + '％ ' + result.status)
@@ -115,6 +119,12 @@
                 $("#time").text(hour + ":" + minute);
                 $("#date").text(Month + "/" + Today + "/" + myYear + " " + youbi[myWeek]);
             }
+
+            function updateWeather() {
+                coromo.owm.getCurrentWeather(function(data) {
+                    $('#weather').text(data.list[0].weather[0].main + " " + data.list[0].weather[0].icon);
+                });
+            }
         </script>
         <style>
             @font-face {
@@ -193,6 +203,7 @@
                 <span id="uri">openUri("coromo.co")</span>
                 <span id="rhs">revertHomeScreen</span>
                 <span id="battery">100% charging</span>
+                <span id="weather">Sunny 01d</span>
             </div>
         </div>
     </body>

@@ -153,3 +153,15 @@ var coromo = {
     editFavoriteFolder : function(callback) {
     }
 };
+/**
+ * @class OpenWeatherMapから天気を取得するAPI
+ */
+coromo.owm = {
+    /**
+     * 現在の天気を取得する
+     * @param {Function} callback 取得したデータを返す
+     * @static
+     */
+    getCurrentWeather : function(callback) {
+    }
+};

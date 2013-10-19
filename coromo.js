@@ -45,6 +45,8 @@
             andjs.openGoogleMaps();
         } else if (action === "browser") {
             andjs.openBrowser();
+        } else if (action === "search") {
+            andjs.openSearchBox();
         }
     }
 

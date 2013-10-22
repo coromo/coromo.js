@@ -136,15 +136,15 @@ var coromo = {
      * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリの名前</td>
      * </tr>
      * <tr>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">app1ImageSrc</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">imageSrcs</td>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アイコン画像へのパス</td>
      * </tr>
      * <tr>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">app1PackageName</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">packageNames</td>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリのパッケージ名</td>
      * </tr>
      * <tr>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">app1ClassName</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">classNames</td>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリのクラス名</td>
      * </tr>
      * </tbody>

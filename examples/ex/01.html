@@ -23,6 +23,8 @@
                 coromo.watchBatteryStatus(function(result) {
                     $('#battery').text(result.level + '％ ' + result.status)
                 });
+                //お気に入りフォルダ
+                updateFavoriteFolder(coromo.getFavoriteFolderApps());
                 //アイコン部分
                 var touchedImageId;
                 var isTapped;
@@ -94,6 +96,9 @@
                 $('#rhs').bind('touchend', function() {
                     coromo.revertHomeScreen();
                 });
+                $('#edit').bind('touchend',function(){
+                    coromo.editFavoriteFolder(updateFavoriteFolder);
+                });
                 coromo.onResume = function() {
                     $('#' + touchedImageId).children("img").css("opacity", "1.0");
                 }
@@ -125,6 +130,13 @@
                     $('#weather').text(data.list[0].weather[0].main + " " + data.list[0].weather[0].icon);
                 });
             }
+
+            function updateFavoriteFolder(obj) {
+                $('#fav1').text(obj.appNames[0]);
+                $('#fav2').text(obj.appNames[1]);
+                $('#fav3').text(obj.appNames[2]);
+                $('#fav4').text(obj.appNames[3]);
+            }
         </script>
         <style>
             @font-face {
@@ -153,11 +165,13 @@
                 font-family: "bank"
             }
             #container li {
-                float: left;
-                /*overflow: hidden*/
+                float: left
             }
             #container .lbox {
                 overflow: hidden
+            }
+            .favoritefolder {
+                font-size: 40px
             }
         </style>
     </head>
@@ -204,6 +218,13 @@
                 <span id="rhs">revertHomeScreen</span>
                 <span id="battery">100% charging</span>
                 <span id="weather">Sunny 01d</span>
+                <div class="favoritefolder">
+                    <span id="fav1"> </span>
+                    <span id="fav2"> </span>
+                    <span id="fav3"> </span>
+                    <span id="fav4"> </span>
+                    <span id="edit">edit</span>
+                </div>
             </div>
         </div>
     </body>

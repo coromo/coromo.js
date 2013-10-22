@@ -52,6 +52,12 @@
 
     function getFavoriteFolderApps() {
         var obj;
+        localStorage["coromoFavoriteFolderApp"] = ( typeof localStorage["coromoFavoriteFolderApp"] !== "undefined") ? localStorage["coromoFavoriteFolderApp"] : JSON.stringify({
+            appNames : ['Twitter', 'Facebook'],
+            imgSrcs : ['', ''],
+            packageNames : ['', ''],
+            classNames : ['', '']
+        });
         try {
             obj = JSON.parse(localStorage["coromoFavoriteFolderApp"]);
         } catch (e) {

@@ -70,7 +70,7 @@ var coromo = {
     },
     /**
      * アクション名からアプリを起動する
-     * @param {String} action アクション名("mailer","camera","dial","gallery","settings","maps")
+     * @param {String} action アクション名("mailer","camera","dial","gallery","settings","maps","search")
      * @static
      */
     execAction : function(action) {
@@ -132,20 +132,20 @@ var coromo = {
      * <td bgcolor="#7F8FB1" style="color:#FFFFFF";>値の内容</td>
      * </tr>
      * <tr>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">app1Name</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">一つ目のアプリの名前</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">appNames</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリの名前</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">app1ImageSrc</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">一つ目のアプリのアイコン画像へのパス</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アイコン画像へのパス</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">app1PackageName</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">一つ目のアプリのパッケージ名</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリのパッケージ名</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">app1ClassName</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">一つ目のアプリのクラス名</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリのクラス名</td>
      * </tr>
      * </tbody>
      * </table>

@@ -13,6 +13,7 @@ Documentation
 - Japanese
     - [API](https://rawgithub.com/coromo/coromo.js/master/doc/index.html)
     - [Manifest](https://github.com/coromo/coromo.js/blob/master/manifest_doc/README.md)
+
 License
 -------
 

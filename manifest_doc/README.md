@@ -11,6 +11,6 @@
 |      |IndicatorColor   |  0-1|インディケーターの色(カラーコード16進数)|String |"#87CEEB"             |
 |      |ThemeColor       |  0-1|テーマの色                              |String |"#87CEEB"             |
 |page  |                 |1以上|                                        |       |                      |theme
-|      |type             |    1|ページの種類(icon or html)              |String |"icon" "page"         |
+|      |type             |    1|ページの種類(icon or html)              |String |"icon" "html"         |
 |      |html_path        |   *1|htmlのパス(htmlページに必須)            |String |"index.html"          |
 

@@ -20,11 +20,11 @@
 ```xml:Manifest.xml
 <?xml version="1.0" encoding="utf-8"?>
 <theme wallpaper_path="/images/background.png"
-       LAB_path      ="/images/dock_l.png"
-       MAB_path      ="/images/dock_m.png"
-       RAB_path      ="/images/dock_r.png"
+             LAB_path="/images/dock_l.png"
+             MAB_path="/images/dock_m.png"
+             RAB_path="/images/dock_r.png"
        IndicatorColor="#87CEEB"
-       ThemeColor    ="#87CEEB"
+           ThemeColor="#87CEEB"
        >
     <page type="html"
           html_path="01.html"

@@ -4,7 +4,6 @@
 |:-----|:----------------|----:|----------------------------------------|-------|----------------------|:-----
 |theme |                 |    1|    
 |      |wallpaper_path   |    1|壁紙の相対パス                          |String |"/images/wallpaper.png"|
-|      |isParallaxEnabled|  0-1|視差効果を有効にするかどうか            |boolean|"false"               |
 |      |LAB_path         |  0-1|dock(左)の背景画像の相対パス            |String |"/images/dock_l.png"   |
 |      |MAB_path         |  0-1|dock(真ん中)の背景画像の相対パス        |String |"/images/dock_m.png"   |
 |      |RAB_path         |  0-1|dock(右)の背景画像の相対パス            |String |"/images/dock_r.png"   |

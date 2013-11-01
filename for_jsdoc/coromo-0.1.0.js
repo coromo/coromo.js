@@ -45,13 +45,23 @@ var coromo = {
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">Dropbox</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"co.coromo.android.homeapp"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.dropbox.android"</td>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.dropbox.android.activity.<br>DropboxBrowser""</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">Evernote</td>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.evernote"</td>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.evernote.ui.HomeActivity"</td>
+     * </tr>
+     * <tr>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">Skype</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.skype.raider"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.skype.android.app.main.SplashActivity"</td>
+     * </tr>
+     * <tr>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">coromo</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">"co.coromo.android.homeapp"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">"co.coromo.android.homeapp.StoreActivity"</td>
      * </tr>
      * </tbody>
      * </table><br>

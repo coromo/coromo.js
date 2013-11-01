@@ -1,6 +1,6 @@
 /**
  * coromo.js
- * v0.1.0
+ * v0.1.1
  * @requires coromo API v1.0.3
  *
  * @discription
@@ -20,9 +20,8 @@
 
     global._resumeFromFavoriteFolder = function(result) {
         var obj;
-        localStorage["coromoFavoriteFolderApp"] = result;
         try {
-            JSON.parse(result);
+            obj = JSON.parse(result);
         } catch (e) {
             var err = new Error('returned invalid JSON from coromo API');
             throw err;
@@ -52,14 +51,14 @@
 
     function getFavoriteFolderApps() {
         var obj;
-        localStorage["coromoFavoriteFolderApp"] = ( typeof localStorage["coromoFavoriteFolderApp"] !== "undefined") ? localStorage["coromoFavoriteFolderApp"] : JSON.stringify({
+        var favoriteFolderApp = ( typeof andjs.getFavoriteFolderApps !== "undefined") ? andjs.getFavoriteFolderApps() : JSON.stringify({
             appNames : ['Twitter', 'Facebook'],
             imgSrcs : ['', ''],
             packageNames : ['', ''],
             classNames : ['', '']
         });
         try {
-            obj = JSON.parse(localStorage["coromoFavoriteFolderApp"]);
+            obj = JSON.parse(favoriteFolderApp);
         } catch (e) {
             var err = new Error('returned invalid JSON from coromo API');
             throw err;

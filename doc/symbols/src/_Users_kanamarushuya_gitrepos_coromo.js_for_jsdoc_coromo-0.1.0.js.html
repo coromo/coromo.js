@@ -132,54 +132,22 @@
 <span class='line'>125</span> </span><span class="WHIT">    </span><span class="NAME">watchBatteryStatus</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>126</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>127</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>128</span>      * お気に入りフォルダに登録されたアプリ情報を取得する
-<span class='line'>129</span>      * @return {Object} FavoriteFolderAppsオブジェクト
-<span class='line'>130</span>      * @static
-<span class='line'>131</span>      */</span><span class="WHIT">
-<span class='line'>132</span> </span><span class="WHIT">    </span><span class="NAME">getFavoriteFolderApps</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>133</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>134</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>135</span>      * お気に入りフォルダの編集画面を呼び出す
-<span class='line'>136</span>      * @param {Function} callback 編集結果(FavoriteFolderAppsオブジェクト)を返す&lt;br>&lt;br>
-<span class='line'>137</span>      * * FavoriteFolderAppsオブジェクト
-<span class='line'>138</span>      * &lt;table style="border: 0px #7F8FB1 solid;" cellspacing="0" cellpadding="0">
-<span class='line'>139</span>      * &lt;tbody>
-<span class='line'>140</span>      * &lt;tr>
-<span class='line'>141</span>      * &lt;td bgcolor="#7F8FB1" style="color:#FFFFFF";>属性名&lt;/td>
-<span class='line'>142</span>      * &lt;td bgcolor="#7F8FB1" style="color:#FFFFFF";>値の内容&lt;/td>
-<span class='line'>143</span>      * &lt;/tr>
-<span class='line'>144</span>      * &lt;tr>
-<span class='line'>145</span>      * &lt;td valign="top" style="border: 1px #7F8FB1 solid;">appNames&lt;/td>
-<span class='line'>146</span>      * &lt;td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリの名前&lt;/td>
-<span class='line'>147</span>      * &lt;/tr>
-<span class='line'>148</span>      * &lt;tr>
-<span class='line'>149</span>      * &lt;td valign="top" style="border: 1px #7F8FB1 solid;">imageSrcs&lt;/td>
-<span class='line'>150</span>      * &lt;td valign="top" style="border: 1px #7F8FB1 solid;">String[] アイコン画像へのパス&lt;/td>
-<span class='line'>151</span>      * &lt;/tr>
-<span class='line'>152</span>      * &lt;tr>
-<span class='line'>153</span>      * &lt;td valign="top" style="border: 1px #7F8FB1 solid;">packageNames&lt;/td>
-<span class='line'>154</span>      * &lt;td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリのパッケージ名&lt;/td>
-<span class='line'>155</span>      * &lt;/tr>
-<span class='line'>156</span>      * &lt;tr>
-<span class='line'>157</span>      * &lt;td valign="top" style="border: 1px #7F8FB1 solid;">classNames&lt;/td>
-<span class='line'>158</span>      * &lt;td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリのクラス名&lt;/td>
-<span class='line'>159</span>      * &lt;/tr>
-<span class='line'>160</span>      * &lt;/tbody>
-<span class='line'>161</span>      * &lt;/table>
-<span class='line'>162</span>      */</span><span class="WHIT">
-<span class='line'>163</span> </span><span class="WHIT">    </span><span class="NAME">editFavoriteFolder</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>164</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>165</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>166</span> </span><span class="COMM">/**
-<span class='line'>167</span>  * @class OpenWeatherMapから天気を取得するAPI
-<span class='line'>168</span>  */</span><span class="WHIT">
-<span class='line'>169</span> </span><span class="NAME">coromo.owm</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>170</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>171</span>      * 現在の天気を取得する
-<span class='line'>172</span>      * @param {Function} callback 取得したデータを返す
-<span class='line'>173</span>      * @static
-<span class='line'>174</span>      */</span><span class="WHIT">
-<span class='line'>175</span> </span><span class="WHIT">    </span><span class="NAME">getCurrentWeather</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>176</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>177</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>178</span> </span></pre></body></html>
+<span class='line'>128</span>      * お気に入りフォルダを開く
+<span class='line'>129</span>      * @static
+<span class='line'>130</span>      */</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">    </span><span class="NAME">openFavoriteApps</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="COMM">/**
+<span class='line'>135</span>  * @class OpenWeatherMapから天気を取得するAPI
+<span class='line'>136</span>  */</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="NAME">coromo.owm</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>139</span>      * 現在の天気を取得する
+<span class='line'>140</span>      * @param {Function} callback 取得したデータを返す
+<span class='line'>141</span>      * @static
+<span class='line'>142</span>      */</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">    </span><span class="NAME">getCurrentWeather</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> </span></pre></body></html>

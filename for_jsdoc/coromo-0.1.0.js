@@ -125,43 +125,11 @@ var coromo = {
     watchBatteryStatus : function(callback) {
     },
     /**
-     * お気に入りフォルダに登録されたアプリ情報を取得する
-     * @return {Object} FavoriteFolderAppsオブジェクト
+     * お気に入りフォルダを開く
      * @static
      */
-    getFavoriteFolderApps : function() {
+    openFavoriteApps : function() {
     },
-    /**
-     * お気に入りフォルダの編集画面を呼び出す
-     * @param {Function} callback 編集結果(FavoriteFolderAppsオブジェクト)を返す<br><br>
-     * * FavoriteFolderAppsオブジェクト
-     * <table style="border: 0px #7F8FB1 solid;" cellspacing="0" cellpadding="0">
-     * <tbody>
-     * <tr>
-     * <td bgcolor="#7F8FB1" style="color:#FFFFFF";>属性名</td>
-     * <td bgcolor="#7F8FB1" style="color:#FFFFFF";>値の内容</td>
-     * </tr>
-     * <tr>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">appNames</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリの名前</td>
-     * </tr>
-     * <tr>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">imageSrcs</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アイコン画像へのパス</td>
-     * </tr>
-     * <tr>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">packageNames</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリのパッケージ名</td>
-     * </tr>
-     * <tr>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">classNames</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">String[] アプリのクラス名</td>
-     * </tr>
-     * </tbody>
-     * </table>
-     */
-    editFavoriteFolder : function(callback) {
-    }
 };
 /**
  * @class OpenWeatherMapから天気を取得するAPI

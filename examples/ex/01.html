@@ -23,8 +23,6 @@
                 coromo.watchBatteryStatus(function(result) {
                     $('#battery').text(result.level + '％ ' + result.status)
                 });
-                //お気に入りフォルダ
-                updateFavoriteFolder(coromo.getFavoriteFolderApps());
                 //アイコン部分
                 var touchedImageId;
                 var isTapped;

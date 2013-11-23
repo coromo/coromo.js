@@ -9,17 +9,6 @@
  */
 ( function(global) {
 
-    global._resumeFromFavoriteFolder = function(result) {
-        var obj;
-        try {
-            obj = JSON.parse(result);
-        } catch (e) {
-            var err = new Error('returned invalid JSON from coromo API');
-            throw err;
-        }
-        _editFavoriteFolderCallback(obj);
-    };
-
     function execAction(action) {
         if (action === "mailer") {
             andjs.openMailer();
@@ -79,9 +68,8 @@
         });
     };
     global.coromo = {
-        editFavoriteFolder : editFavoriteFolder,
         execAction : execAction,
-        getFavoriteFolderApps : getFavoriteFolderApps,
+        openFavoriteApps : openFavoriteApps,
         openAllApps : openAllApps,
         openApp : openApp,
         openUri : openUri,

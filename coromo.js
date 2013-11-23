@@ -1,22 +1,13 @@
 /**
  * coromo.js
- * v0.1.1
- * @requires coromo API v1.0.3
+ * v0.1.2
+ * @requires coromo API v1.0.7
  *
  * @discription
  * coromo API bind
  * Released under the MIT license.
  */
 ( function(global) {
-
-    var _editFavoriteFolderCallback;
-    function editFavoriteFolder(callback) {
-        _editFavoriteFolderCallback = callback ||
-        function() {
-        };
-        andjs.editFavoriteFolder();
-    }
-
 
     global._resumeFromFavoriteFolder = function(result) {
         var obj;
@@ -49,25 +40,12 @@
         }
     }
 
-    function getFavoriteFolderApps() {
-        var obj;
-        var favoriteFolderApp = ( typeof andjs.getFavoriteFolderApps !== "undefined") ? andjs.getFavoriteFolderApps() : JSON.stringify({
-            appNames : ['Twitter', 'Facebook'],
-            imgSrcs : ['', ''],
-            packageNames : ['', ''],
-            classNames : ['', '']
-        });
-        try {
-            obj = JSON.parse(favoriteFolderApp);
-        } catch (e) {
-            var err = new Error('returned invalid JSON from coromo API');
-            throw err;
-        }
-        return obj;
-    }
-
     function openAllApps() {
         andjs.openAllApps();
+    }
+
+    function openFavoriteApps() {
+        andjs.openFavorite();
     }
 
     function openApp(packageName, className) {

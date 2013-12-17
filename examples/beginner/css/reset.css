@@ -140,7 +140,7 @@ a:hover {color: #69f;}
 ::selection {background: #fcd700; color: #fff; text-shadow: none;} 
 
 /*	j.mp/webkit-tap-highlight-color */
-a:link {-webkit-tap-highlight-color: #fcd700;} 
+/*a:link {-webkit-tap-highlight-color: #fcd700;} */
 
 ins {background-color: #fcd700; color: #000; text-decoration: none;}
 mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}

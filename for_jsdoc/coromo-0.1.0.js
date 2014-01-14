@@ -15,53 +15,53 @@ var coromo = {
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">Twitter </td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.twitter.android"</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.twitter.android.StartActivity"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.twitter.android',</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.twitter.android.StartActivity'</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">Facebook </td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.facebook.katana"</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.facebook.katana.LoginActivity"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.facebook.katana',</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.facebook.katana.LoginActivity'</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">Line</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"jp.naver.line.android"</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"jp.naver.line.android.activity.SplashActivity"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'jp.naver.line.android',</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'jp.naver.line.android.activity.SplashActivity'</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">カレンダー</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.google.android.calendar"</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.android.calendar.AllInOneActivity"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.google.android.calendar',</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.android.calendar.AllInOneActivity'</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">乗換案内</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"jp.co.jorudan.nrkj"</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"jp.co.jorudan.nrkj.Main"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'jp.co.jorudan.nrkj',</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'jp.co.jorudan.nrkj.Main'</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">Instagram</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.instagram.android"</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.instagram.android.activity.<br>MainTabActivity"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.instagram.android',</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.instagram.android.activity.<br>MainTabActivity'</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">Dropbox</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.dropbox.android"</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.dropbox.android.activity.<br>DropboxBrowser""</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.dropbox.android',</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.dropbox.android.activity.<br>DropboxBrowser'</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">Evernote</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.evernote"</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.evernote.ui.HomeActivity"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.evernote',</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.evernote.ui.HomeActivity'</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">Skype</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.skype.raider"</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"com.skype.android.app.main.SplashActivity"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.skype.raider',</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'com.skype.android.app.main.SplashActivity'</td>
      * </tr>
      * <tr>
      * <td valign="top" style="border: 1px #7F8FB1 solid;">coromo</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"co.coromo.android.homeapp"</td>
-     * <td valign="top" style="border: 1px #7F8FB1 solid;">"co.coromo.android.homeapp.StoreActivity"</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'co.coromo.android.homeapp',</td>
+     * <td valign="top" style="border: 1px #7F8FB1 solid;">'co.coromo.android.homeapp.StoreActivity'</td>
      * </tr>
      * </tbody>
      * </table><br>

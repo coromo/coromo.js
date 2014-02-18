@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="css/reset.css" />
+        <script type="text/javascript" src="lib/jquery-1.10.0.min.js"></script>
+        <script type="text/javascript" src="lib/coromo.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                //レスポンシブ対応
+                var aspect = window.innerWidth / window.innerHeight;
+                var scale = 1;
+                if (aspect > 1080 / 1660) {
+                    scale = window.innerHeight / 1660;
+                    $('#background').css({
+                        "transform" : "scale(" + scale + ")",
+                        "left" : (-1302 * scale + window.innerWidth) / 2 + "px",
+                        "top" : (-1920 * scale + window.innerHeight) / 2 + "px",
+                        "height" : 1660 - (-1920 + window.innerHeight / scale) / 2 - 1 + "px"
+                    });
+                } else {
+                    scale = window.innerWidth / 1080;
+                    $('#background').css({
+                        "width" : 1080 - (-1302 + window.innerWidth / scale) / 2 + "px",
+                        "transform" : "scale(" + scale + ")",
+                        "left" : (-1302 * scale + window.innerWidth) / 2 + "px",
+                        "top" : (-1920 * scale + window.innerHeight) / 2 + "px",
+                        "height" : window.innerHeight / scale - (-1920 + window.innerHeight / scale) / 2 + "px"
+                    });
+                }
+                $('#container').css({
+                    "transform" : "scale(" + scale + ")",
+                    "margin-left" : (-1080 * scale + window.innerWidth) / 2 + "px",
+                    "margin-top" : (-1660 * scale + window.innerHeight) / 2 + "px",
+                });
+                //時計部分
+                updateClock();
+                setInterval("updateClock()", 500);
+                //バッテリーウォッチ
+                coromo.watchBatteryStatus(function(result) {
+                    $('#battery').text(result.level + '％ ' + result.status)
+                });
+                //アイコン部分
+                var touchedImageId;
+                var isTapped;
+                $('img').bind('touchstart', function() {
+                    if ($(this).parent().attr('id').indexOf('tile'))
+                        return;
+                    $(this).css("opacity", "0.6");
+                    touchedImageId = ($(this).parent().attr('id'));
+                    isTapped = true;
+                });
+                $('img').bind('touchmove', function() {
+                    isTapped = false;
+                    $(this).css("opacity", "1.0");
+                });
+                $('img').bind('touchend', function() {
+                    $(this).css("opacity", "1.0");
+                });
+                $('img').bind('touchcancel', function() {
+                    $(this).css("opacity", "1.0");
+                });
+                //アプリ起動の実装
+                $('#tile_1 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.openApp("co.coromo.android.homeapp", "co.coromo.android.homeapp.StoreActivity");
+                    }
+                });
+                $('#tile_2 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.openApp("com.twitter.android", "com.twitter.android.StartActivity");
+                    }
+                });
+                $('#tile_3 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.openApp("jp.naver.line.android", "jp.naver.line.android.activity.SplashActivity");
+                    }
+                });
+                $('#tile_4 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.openApp("com.facebook.katana", "com.facebook.katana.LoginActivity");
+                    }
+                });
+                $('#tile_5 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.execAction("mailer");
+                    }
+                });
+                $('#tile_6 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.execAction("dial");
+                    }
+                });
+                $('#tile_7 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.execAction("camera");
+                    }
+                });
+                $('#tile_8 img').bind('touchend', function() {
+                    if (isTapped) {
+                        coromo.execAction("browser");
+                    }
+                });
+            });
+            function updateClock() {
+                myDate = new Date();
+                myYear = myDate.getFullYear();
+                myWeek = myDate.getDay();
+                Month = myDate.getMonth() + 1;
+                Today = myDate.getDate();
+                tsuki = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+                youbi = new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
+                var hour = myDate.getHours();
+                var minute = myDate.getMinutes();
+                var second = myDate.getSeconds();
+                var dayTail = "";
+                if (minute < 10) {
+                    minute = "0" + minute;
+                }
+                if (hour < 10) {
+                    hour = "0" + hour;
+                }
+                $("#time").text(hour + ":" + minute);
+                $("#date").text(Month + "/" + Today + "/" + myYear + " " + youbi[myWeek]);
+            }
+
+        </script>
+        <style>
+            @font-face {
+                font-family: 'Allura';
+                src: url(fonts/Allura-Regular.ttf)
+            }
+            html, body {
+                overflow: hidden
+            }
+            #background {
+                width: 1302px;
+                height: 1920px;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                overflow: hidden;
+                background: url(images/back.png);
+                background-size: 1302px;
+                -webkit-transform-origin: 0 0%;
+            }
+            #container {
+                position:absolute;
+                overflow: hidden;
+                width: 1080px;
+                height: 1660px;
+                -webkit-transform-origin: 0 0%;
+            }
+            #container #clock {
+                font-size: 250px;
+                color: white;
+                margin-top: 55px;
+                margin-left: 110px;
+                margin-bottom: 762px;
+                font-family: "Allura"
+            }
+            #container li {
+                float: left;
+                margin-right: 55px;
+            }
+            #container .lbox {
+                overflow: hidden;
+                margin-left: 110px;
+                margin-bottom: 95px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="background"></div>
+        <div id="container">
+            <div id="clock">
+                <span class="clock" id="time">01:54</span>
+            </div>
+            <div class="lbox">
+                <ul>
+                    <li id="tile_1" class="icon"><img src="images/icon_off/coromo_off.png" />
+                    </li>
+                    <li id="tile_2"><img src="images/icon_off/twitter_off.png" />
+                    </li>
+                    <li id="tile_3"><img src="images/icon_off/line_off.png" />
+                    </li>
+                    <li id="tile_4"><img src="images/icon_off/fb_off.png" />
+                    </li>
+                </ul>
+            </div>
+            <div class="lbox">
+                <ul>
+                    <li id="tile_5"><img src="images/icon_off/mail_off.png" />
+                    </li>
+                    <li id="tile_6"><img src="images/icon_off/tel_off.png" />
+                    </li>
+                    <li id="tile_7"><img src="images/icon_off/camera_off.png" />
+                    </li>
+                    <li id="tile_8"><img src="images/icon_off/browser_off.png" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
+

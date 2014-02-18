@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="css/reset.css" />
+        <script type="text/javascript" src="lib/jquery-1.10.0.min.js"></script>
+        <script type="text/javascript" src="lib/coromo.js"></script>
+        <script type="text/javascript" src="lib/plugins/owm.coromo.js"></script>
+        <script type="text/javascript" >
+            $(function() {
+                var aspect = window.innerWidth / window.innerHeight;
+                var scale = 1;
+                if (aspect > 1080 / 1660) {
+                    scale = window.innerHeight / 1660;
+                    $('#background').css({
+                        "transform" : "scale(" + scale + ")",
+                        "top" : -130 * scale + "px",
+                        "left" : (-1302 * scale + window.innerWidth) / 2 + "px",
+                        "width" : (1302 + window.innerWidth / scale) / 2 + "px",
+                    });
+                } else {
+                    scale = window.innerWidth / 1080;
+                    $('#background').css({
+                        "transform" : "scale(" + scale + ")",
+                        "top" : (-1920 * scale + window.innerHeight) / 2 + "px",
+                        "left" : (-1302 * scale + window.innerWidth) / 2 + "px",
+                        "height" : (1920 + window.innerHeight / scale) / 2 - 1 + "px"
+                    });
+                }
+                $('#container').css({
+                    "transform" : "scale(" + scale + ")",
+                    "margin-left" : (-1080 * scale + window.innerWidth) / 2 + "px",
+                    "margin-top" : (-1660 * scale + window.innerHeight) / 2 + "px",
+                });
+                $('a').bind('touchstart', function() {
+                    $(this).children('img').addClass('hover');
+                }).bind('touchend touchmove touchcancel', function() {
+                    $(this).children('img').removeClass('hover');
+                });
+                var canvas = document.getElementById('c');
+                if (!canvas || !canvas.getContext) {
+                    return false;
+                }
+                coromo.watchBatteryStatus(function(result) {
+                    $('.battery').text(result.level);
+                    var ctx = canvas.getContext('2d');
+                    ctx.beginPath();
+                    ctx.clearRect(0, 0, 200, 200);
+                    ctx.strokeStyle = "white";
+                    ctx.lineWidth = 10;
+                    ctx.arc(100, 100, 85, -90 * Math.PI / 180, (-90 + 360 * result.level / 100) * Math.PI / 180, false);
+                    ctx.stroke();
+                });
+                updateWeather();
+                setInterval('updateWeather()', 3600000);
+                updateClock();
+                setInterval("updateClock()", 500);
+            });
+            function updateWeather() {
+                coromo.owm.getCurrentWeather(function(data) {
+                    $('.wtemp').text(Math.floor(data.list[0].main.temp - 273.15));
+                    $('.wname').text(data.list[0].name.toUpperCase());
+                    var table = {
+                        "01d" : "sunny",
+                        "01n" : "sunny",
+                        "02d" : "sunny",
+                        "02n" : "sunny",
+                        "03d" : "overflow",
+                        "03n" : "overflow",
+                        "04d" : "cloudy",
+                        "04n" : "cloudy",
+                        "09d" : "dazzle",
+                        "09n" : "dazzle",
+                        "10d" : "rainy",
+                        "10n" : "rainy",
+                        "11d" : "thunder",
+                        "11n" : "thunder",
+                        "13d" : "snowy",
+                        "13n" : "snowy",
+                        "50d" : "fog",
+                        "50n" : "fog"
+                    };
+
+                    $('.wicon').css({
+                        'background-image' : "url(images/weater100_white/" + table[data.list[0].weather[0].icon] + ".png)"
+                    })
+                });
+            }
+
+            function updateClock() {
+                myDate = new Date();
+                myYear = myDate.getFullYear();
+                myWeek = myDate.getDay();
+                Month = myDate.getMonth() + 1;
+                Today = myDate.getDate();
+                tsuki = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+                youbi = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+                var hour = myDate.getHours();
+                var minute = myDate.getMinutes();
+                var second = myDate.getSeconds();
+                var dayTail = "";
+                if ((Today % 10 == 1) && (Today != 11)) {
+                    dayTail = "st";
+                } else if ((Today % 10 == 2) && (Today != 12)) {
+                    dayTail = "nd";
+                } else if ((Today % 10 == 3) && (Today != 13)) {
+                    dayTail = "rd";
+                } else {
+                    dayTail = "th";
+                }
+
+                if (minute < 10) {
+                    minute = "0" + minute;
+                }
+                if (hour < 10) {
+                    hour = "0" + hour;
+                }
+                $(".clock").text(hour + ":" + minute);
+                $(".day").text(Today + dayTail + " " + tsuki[Month - 1] + " " + myYear);
+                $(".date").text(youbi[myWeek]);
+            }
+
+        </script>
+        <style>
+            @font-face {
+                font-family: 'SourceSansProR';
+                src: url(fonts/SourceSansPro-Regular.ttf)
+            }
+            @font-face {
+                font-family: 'SourceSansProB';
+                src: url(fonts/SourceSansPro-Bold.ttf)
+            }
+            #background {
+                position: absolute;
+                width: 1191px;
+                height: 1790px;
+                background: url(images/bg.png);
+                background-size: 1302px;
+                background-repeat: no-repeat;
+                -webkit-transform-origin: 0 0%;
+            }
+            #container {
+                position: absolute;
+                width: 1080px;
+                height: 1660px;
+                -webkit-transform-origin: 0 0%;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            }
+            #container .lbox {
+                overflow: hidden;
+                margin-left: 175px;
+                margin-top: 270px
+            }
+            #container .wbox {
+                margin: 420px 0px 0px 410px;
+                height: 100px;
+                width: 500px;
+                color: white;
+                font-size: 50px;
+                font-family: 'SourceSansProB';
+                margin-bottom: 50px;
+            }
+            #container .wbox .wicon {
+                width: 100px;
+                height: 100px;
+                float: left
+            }
+            #container .wbox .wright {
+                position: relative;
+                top: -10px;
+                left: 30px;
+            }
+            #container .wbox .wright .wtemp {
+                float: left
+            }
+            #container .wbox .wright .celsius {
+                margin-top: 10px;
+                margin-right: 10px;
+            }
+            #container .clock {
+                color: white;
+                font-size: 140px;
+                font-family: 'SourceSansProR';
+                margin: auto;
+                width: 400px;
+                text-align: center
+            }
+            #container .day {
+                color: white;
+                font-size: 70px;
+                font-family: 'SourceSansProR';
+                margin: auto;
+                width: 600px;
+                text-align: center
+            }
+            #container .date {
+                color: white;
+                font-size: 70px;
+                font-family: 'SourceSansProR';
+                margin: auto;
+                width: 400px;
+                text-align: center
+            }
+            #container .battery {
+                position: relative;
+                top: -150px;
+                color: white;
+                font-size: 70px;
+                font-family: 'SourceSansProR';
+                margin: auto;
+                width: 400px;
+                text-align: center
+            }
+            #container #c {
+                margin-left: 440px;
+                margin-top: 50px;
+            }
+            a#tile_1 {
+                background-image: url(images/icon_on/or_90_coromo.png);
+            }
+            a#tile_2 {
+                background-image: url(images/icon_on/or_90_tel.png);
+            }
+            a#tile_3 {
+                background-image: url(images/icon_on/or_90_mail.png);
+            }
+            a#tile_4 {
+                background-image: url(images/icon_on/or_90_camera.png);
+            }
+            a#tile_5 {
+                background-image: url(images/icon_on/or_90_app.png);
+            }
+            a.icon {
+                width: 90px;
+                height: 90px;
+                margin-right: 70px;
+                display: block;
+                float: left;
+            }
+            .hover {
+                opacity: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="background"></div>
+        <div id="container">
+            <div class="wbox">
+                <div class="wicon"></div>
+                <div class="wright">
+                    <div class="wtemp"></div>
+                    <img class="wtemp celsius" src="images/celsius.png">
+                    <br />
+                    <div class="wname"></div>
+                </div>
+            </div>
+            <div class="clock">
+                12:00
+            </div>
+            <div class="day">
+                1st Janualy 2014
+            </div>
+            <div class="date">
+                Wednesday
+            </div>
+            <canvas id="c" width="200px" height="200px"></canvas>
+            <div class="battery">
+                100
+            </div>
+            <div class="lbox">
+                <a href="javascript:coromo.openApp('co.coromo.android.homeapp','co.coromo.android.homeapp.StoreActivity')" class="icon" id="tile_1"><img src="images/icon_off/w_90_coromo.png"></a>
+                <a href="javascript:coromo.execAction('dial')" class="icon" id="tile_2"><img src="images/icon_off/w_90_tel.png"></a>
+                <a href="javascript:coromo.execAction('mailer')" class="icon" id="tile_3"><img src="images/icon_off/w_90_mail.png"></a>
+                <a href="javascript:coromo.execAction('camera')" class="icon" id="tile_4"><img src="images/icon_off/w_90_camera.png"></a>
+                <a href="javascript:coromo.openAllApps()" class="icon" id="tile_5"><img src="images/icon_off/w_90_app.png"></a>
+            </div>
+        </div>
+    </body>
+</html>
+

@@ -9,44 +9,68 @@
  */
 ( function(global) {
 
+    var XHR = new XMLHttpRequest();
+    function get(query, parms, callback) {
+        var isFirst = true;
+        for (var name in parms) {
+            query += isFirst ? "?" : "&";
+            isFirst = false;
+            query += name + "=" + parms[name];
+        }
+        XHR.onreadystatechange = function() {
+            if (XHR.readyState == 4) {
+                if ( typeof callback !== 'undefined') {
+                    callback(XHR.responseText);
+                }
+            }
+        };
+        XHR.open("GET", query, true);
+        XHR.send(null);
+    }
+
     function execAction(action) {
         if (action === "mailer") {
-            andjs.openMailer();
+            get('/openMailer')
         } else if (action === "camera") {
-            andjs.openCamera();
+            get('/openCamera');
         } else if (action === "dial") {
-            andjs.openPhone();
+            get('/openPhone');
         } else if (action === "gallery") {
-            andjs.openGallery();
+            get('/openGallery');
         } else if (action === "settings") {
-            andjs.openSettings();
+            get('/openSettings');
         } else if (action === "maps") {
-            andjs.openGoogleMaps();
+            get('/openMaps');
         } else if (action === "browser") {
-            andjs.openBrowser();
+            get('/openBrowser');
         } else if (action === "search") {
-            andjs.openSearchBox();
+            get('/openSearch');
         }
     }
 
     function openAllApps() {
-        andjs.openAllApps();
+        get('/openAllApps');
     }
 
     function openFavoriteApps() {
-        andjs.openFavorite();
+        get('/openFavoriteApps');
     }
 
     function openApp(packageName, className) {
-        andjs.openApplication(packageName, className);
+        get('/openApp', {
+            "packageName" : packageName,
+            "className" : className
+        });
     }
 
     function openUri(uri) {
-        andjs.openURI(uri || 'http://google.com');
+        get('/openUri', {
+            'uri' : uri || 'http://google.com'
+        });
     }
 
     function revertHomeScreen() {
-        andjs.revertHomeScreen();
+        get('/revertHomeScreen');
     }
 
     var _watchBatteryStatusCallback;
@@ -54,11 +78,18 @@
         _watchBatteryStatusCallback = callback ||
         function() {
         };
-        var status = typeof andjs !== 'undefined' ? andjs.getBatteryStatus() : "undefined";
-        var level = typeof andjs !== 'undefined' ? andjs.getBatteryLevel() : -1;
-        _watchBatteryStatusCallback({
-            status : status,
-            level : level
+        get('/getBatteryStatus', {}, function(data) {
+            var json;
+            try {
+                json = JSON.parse(data);
+            } catch(e) {
+            }
+            var status = json.status;
+            var level = json.level;
+            _watchBatteryStatusCallback({
+                status : status,
+                level : level
+            });
         });
     };
     global.onBatteryChange = function(level, status) {

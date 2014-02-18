@@ -83,7 +83,6 @@
             try {
                 json = JSON.parse(data);
             } catch(e) {
-                alert(data);
             }
             var status = json.status;
             var level = json.level;
